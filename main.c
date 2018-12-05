@@ -17,11 +17,11 @@ int main(){
   }
   printf("Would you like to change the data? ");
   char *response = malloc(10);
-  fgets(response, 10, stdin);
-  strcpy(response, strsep(&response, "\n"));
-  printf("Response: %s\n", response);
   int unanswered = 1;
   while(unanswered){
+    fgets(response, 10, stdin);
+    strcpy(response, strsep(&response, "\n"));
+    printf("Response: %s\n", response);
     if(!strcmp(response,"y") || !strcmp(response, "yes")){
       printf("Enter a string: ");
       fgets(data,200,stdin);
@@ -32,8 +32,7 @@ int main(){
       unanswered = 0;
     }
     else{
-      printf("\nPlease enter valid response. ");
-      fgets(response, 10, stdin);
+      printf("\nPlease enter valid response.");
     }
   }
   printf("shared contents: %s\n", data);
