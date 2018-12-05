@@ -45,6 +45,6 @@ int main(){
   if(!strcmp(response1,"y") || !strcmp(response1, "yes")){
     shmdt(data);
     shmctl(shmid, IPC_RMID, NULL);
-    printf("\nSegment has been deleted.");
+    printf("Segment has been deleted.\n");
   }
 }
