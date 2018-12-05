@@ -17,11 +17,11 @@ int main(){
     printf("Segment was just created, no contents\n");
   }
   //ask to change contents
-  char *response = malloc(10);
+  char *response = malloc(100);
   int unanswered = 1;
   while(unanswered){
     printf("Would you like to change the data? ");
-    fgets(response, 9, stdin);
+    fgets(response, 100, stdin);
     strcpy(response, strsep(&response, "\n"));
     //printf("Response: %s\n", response);
     if(!strcmp(response,"y") || !strcmp(response, "yes")){
