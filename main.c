@@ -10,8 +10,8 @@ int main(){
   int shmid = shmget(key, 200, 0777 | IPC_CREAT);
   char *data = shmat(shmid, (void *)0, 0);
   //show contents of shared memory
-  if(!strcmp(data,"")){
-    printf("Shared contents: [%s]\n", data);
+  if(strcmp(data,"")){
+    printf("Shared contents: %s\n", data);
   }
   else{
     printf("Segment was just created, no contents\n");
