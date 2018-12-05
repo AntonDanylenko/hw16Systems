@@ -18,16 +18,17 @@ int main(){
   printf("Would you like to change the data? ");
   char *response = malloc(10);
   fgets(response, 10, stdin);
+  strcpy(response, strsep(&response, "\n"));
   printf("Response: %s\n", response);
   int unanswered = 1;
   while(unanswered){
-    if(!strncmp(response,"y", 1) || !strncmp(response, "yes", 3)){
+    if(!strcmp(response,"y") || !strcmp(response, "yes")){
       printf("Enter a string: ");
       fgets(data,200,stdin);
       strcpy(data, strsep(&data, "\n"));
       unanswered = 0;
     }
-    else if(!strncmp(response,"n",1) || !strncmp(response, "no",3)){
+    else if(!strcmp(response,"n") || !strcmp(response, "no")){
       unanswered = 0;
     }
     else{
