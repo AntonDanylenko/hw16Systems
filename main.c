@@ -9,19 +9,21 @@ int main(){
   key_t key = ftok("/main.c", 'c');
   int shmid = shmget(key, 200, 0777 | IPC_CREAT);
   char *data = shmat(shmid, (void *)0, 0);
+  //show contents of shared memory
   if(data){
     printf("Shared contents: %s\n", data);
   }
   else{
     printf("Segment was just created, no contents\n");
   }
-  printf("Would you like to change the data? ");
+  //ask to change contents
   char *response = malloc(10);
   int unanswered = 1;
   while(unanswered){
+    printf("Would you like to change the data? ");
     fgets(response, 10, stdin);
     strcpy(response, strsep(&response, "\n"));
-    printf("Response: %s\n", response);
+    //printf("Response: %s\n", response);
     if(!strcmp(response,"y") || !strcmp(response, "yes")){
       printf("Enter a string: ");
       fgets(data,200,stdin);
@@ -32,7 +34,7 @@ int main(){
       unanswered = 0;
     }
     else{
-      printf("\nPlease enter valid response.");
+      printf("Please enter valid response.\n");
     }
   }
   printf("shared contents: %s\n", data);
