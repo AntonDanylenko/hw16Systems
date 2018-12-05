@@ -10,7 +10,7 @@ int main(){
   int shmid = shmget(key, 200, 0777 | IPC_CREAT);
   char *data = shmat(shmid, (void *)0, 0);
   //show contents of shared memory
-  if(data){
+  if(data!=NULL){
     printf("Shared contents: %s\n", data);
   }
   else{
