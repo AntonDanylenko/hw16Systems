@@ -38,4 +38,13 @@ int main(){
     }
   }
   printf("shared contents: %s\n", data);
+  printf("Would you like to delete the segment? ");
+  char *response1 = malloc(100);
+  fgets(response1, 100, stdin);
+  strcpy(response1, strsep(&response1, "\n"));
+  if(!strcmp(response1,"y") || !strcmp(response1, "yes")){
+    shmdt(data);
+    shmctl(shmid, IP_RMID, NULL);
+    printf("\nSegment has been deleted.");
+  }
 }
